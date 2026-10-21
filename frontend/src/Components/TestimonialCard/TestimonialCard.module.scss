@@ -1,0 +1,69 @@
+@use '../../Styles/mixin' as *;
+@use '../../Styles/variables' as *;
+
+.card {
+    @include flex-column;
+    gap: 1.2rem;
+    width: 34rem;
+    padding: 1.6rem;
+    font-family: $satoshi;
+    background: linear-gradient(90deg, rgb(228 228 228 / 20%) 0%, rgb(102 102 102 / 20%) 100%);
+    border: 1px solid rgb(255 255 255 / 10%);
+    border-radius: 1.4rem;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 10px 30px rgb(0 0 0 / 35%);
+
+    .stars {
+        @include flex-center;
+        justify-content: flex-start;
+        gap: 0.3rem;
+
+        img {
+            width: 1.3rem;
+            height: auto;
+        }
+    }
+
+    .row {
+        @include flex-center;
+        justify-content: flex-start;
+        gap: 1.2rem;
+
+        .avatar {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .text {
+            font-size: $fs-14;
+            font-weight: $fw-regular;
+            line-height: 1.4;
+            color: $white;
+        }
+    }
+
+    .author {
+        @include flex-column;
+        gap: 0.2rem;
+
+        .name {
+            font-size: $fs-12;
+            font-weight: $fw-medium;
+            color: $white;
+        }
+
+        .role {
+            font-size: $fs-12;
+            color: $white60;
+        }
+    }
+
+    @include breakpoint(sm) {
+        width: 28rem;
+        padding: 1.4rem;
+    }
+}

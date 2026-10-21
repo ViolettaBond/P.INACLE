@@ -1,0 +1,148 @@
+@use '../../../Styles/mixin' as *;
+@use '../../../Styles/variables' as *;
+
+.servicesSection {
+    width: 100%;
+    padding: 8rem 6.4rem;
+    background-color: $gray13;
+
+    .container {
+        @include container;
+        display: grid;
+        grid-template-columns: 32rem 1fr;
+        gap: 8rem;
+        align-items: start;
+        max-width: 179.2rem;
+        width: 100%;
+        margin: 0 auto;
+
+        .sidebar {
+            width: 100%;
+
+            .stickyBlock {
+                position: sticky;
+                top: 12rem;
+                @include flex-column;
+                gap: 3rem;
+            }
+
+            .mainTitle {
+                font-family: $clash;
+                font-size: clamp(3.2rem, 4.5vw, 4.8rem);
+                font-weight: $fw-semibold;
+                line-height: 1.1;
+                color: $white;
+                letter-spacing: -0.02em;
+            }
+
+            .scheduleBtn {
+                @include flex-center;
+                width: 100%;
+                padding: 1.8rem;
+                font-family: $satoshi;
+                font-size: $fs-16;
+                font-weight: $fw-medium;
+                color: $white;
+                background-color: $orange;
+                border: none;
+                border-radius: 0.8rem;
+                cursor: pointer;
+                transition: 0.2s ease;
+
+                &:hover {
+                    filter: brightness(0.9);
+                }
+            }
+        }
+
+        .contentColumn {
+            @include flex-column;
+            gap: 6rem;
+            width: 100%;
+
+            .categoryDesc {
+                font-family: $satoshi;
+                font-size: $fs-18;
+                line-height: 1.6;
+                color: $white60;
+            }
+
+            .subsectionsList {
+                @include flex-column;
+                gap: 8rem;
+            }
+
+            .subCard {
+                @include flex-column;
+                gap: 2.4rem;
+
+                .subTitle {
+                    font-family: $clash;
+                    font-size: $fs-32;
+                    font-weight: $fw-semibold;
+                    color: $white;
+                }
+
+                .subDesc {
+                    font-family: $satoshi;
+                    font-size: $fs-18;
+                    line-height: 1.6;
+                    color: $white60;
+                }
+
+                .imageWrapper {
+                    width: 100%;
+                    height: auto;
+                    aspect-ratio: 16 / 9;
+                    border-radius: 1.6rem;
+                    overflow: hidden;
+                    border: 1px solid $gray10;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+
+    @include breakpoint(lg) {
+        padding: 6rem 4rem;
+
+        .container {
+            grid-template-columns: 1fr;
+            gap: 4rem;
+
+            .sidebar .stickyBlock {
+                position: static;
+                gap: 2rem;
+            }
+
+            .contentColumn {
+                gap: 4rem;
+
+                .subsectionsList {
+                    gap: 6rem;
+                }
+            }
+        }
+    }
+
+    @include breakpoint(sm) {
+        padding: 4rem 2.4rem;
+
+        .container {
+            padding: 0;
+            
+            .contentColumn .subsectionsList {
+                gap: 4.5rem;
+            }
+        }
+    }
+
+    @include breakpoint(xs) {
+        padding: 4rem 1.6rem;
+    }
+}

@@ -1,0 +1,134 @@
+@use '../../Styles/mixin' as *;
+@use '../../Styles/variables' as *;
+
+.privacyPage {
+    position: relative;
+    width: 100%;
+    background-color: #030302;
+
+    .header {
+        width: 100%;
+        background-image: url('/src/assets/background.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-bottom: 1px solid #141414;
+        margin-bottom: 6rem;
+        padding: 4rem 6.4rem; 
+        @include flex-column-center;
+
+        .headerInner {
+            @include flex-column;
+            align-items: center;
+            text-align: center;
+            gap: 1.6rem;
+            max-width: 84rem;
+            margin: 0 auto; 
+        }
+
+        .mainTitle {
+            font-family: $clash;
+            font-size: clamp(4rem, 6vw, 6.4rem);
+            font-weight: $fw-semibold;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: $white;
+        }
+
+        .date {
+            font-family: $satoshi;
+            font-size: 1.8rem;
+            color: $white60;
+        }
+    }
+
+    .container {
+        @include container;
+        max-width: 84rem;
+        margin: 0 auto;
+        padding: 0 6.4rem; 
+    }
+
+    .content {
+        @include flex-column;
+        gap: 4.5rem;
+
+        .block {
+            @include flex-column;
+            margin-bottom: 2rem;
+            gap: 2rem;
+
+            p {
+                font-family: $satoshi;
+                font-size: 1.8rem;
+                line-height: 1.7;
+                color: $white60;
+            }
+
+            .sectionTitle {
+                font-family: $clash;
+                font-size: clamp(2.8rem, 4vw, 4rem);
+                font-weight: $fw-semibold;
+                line-height: 1.2;
+                color: $white;
+                margin-top: 2rem;
+            }
+
+            .subTitle {
+                font-family: $clash;
+                font-size: clamp(2.2rem, 3vw, 2.8rem);
+                font-weight: $fw-medium;
+                line-height: 1.2;
+                color: $white;
+            }
+        }
+    }
+
+    @include breakpoint(lg) {
+        padding: 12rem 0 6rem;
+
+        .header {
+            padding: 4rem;
+        }
+
+        .container {
+            padding: 0 4rem;
+        }
+
+        .content {
+            gap: 3.5rem;
+        }
+    }
+
+    @include breakpoint(sm) {
+        padding: 10rem 0 5rem;
+
+        .header {
+            margin-bottom: 4rem;
+            padding: 3rem 2.4rem;
+        }
+
+        .container {
+            padding: 0 2.4rem;
+        }
+
+        .content {
+            gap: 2.5rem;
+
+            .block {
+                gap: 1.6rem;
+            }
+        }
+    }
+
+    @include breakpoint(xs) {
+        padding: 8rem 0 4rem;
+
+        .header {
+            padding: 3rem 1.6rem;
+        }
+
+        .container {
+            padding: 0 1.6rem;
+        }
+    }
+}

@@ -1,0 +1,122 @@
+@use '../../Styles/mixin' as *;
+@use '../../Styles/variables' as *;
+
+.faq {
+    padding: 5rem 2rem 6rem;
+
+    .container {
+        @include container;
+
+        .heading {
+            display: flex;
+            align-items: center;
+            gap: 1.6rem;
+            margin-bottom: 3.2rem;
+
+            img {
+                width: 38px;
+                height: 38px;
+                flex-shrink: 0;
+            }
+
+            .title {
+                font-family: $clash;
+                font-size: clamp(2.8rem, 3vw, 4rem);
+                font-weight: $fw-semibold;
+                line-height: 1.2;
+                color: $white;
+            }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.6rem;
+            padding: 1.2rem;
+            border: 1px solid $gray10;
+            border-radius: 1.2rem;
+
+            .card {
+                padding: 2.4rem;
+                border: 1px solid $gray10;
+                border-radius: 0.8rem;
+
+                .question {
+                    margin-bottom: 1.6rem;
+                    font-family: $clash;
+                    font-size: $fs-20;
+                    font-weight: $fw-medium;
+                    line-height: 1.5;
+                    color: $white;
+                }
+
+                .answer {
+                    font-family: $satoshi;
+                    font-size: $fs-18;
+                    font-weight: $fw-regular;
+                    line-height: 1.6;
+                    color: $white80;
+                }
+            }
+        }
+    }
+
+    @include breakpoint(sm) {
+        padding: 4rem 1.6rem;
+
+        .container {
+            .heading {
+                margin-bottom: 2.4rem;
+
+                .title {
+                    font-size: 2.8rem;
+                }
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                padding: 0.8rem;
+                gap: 1.2rem;
+
+                .card {
+                    padding: 1.6rem;
+                }
+            }
+        }
+    }
+
+    @include breakpoint(xs) {
+        .container {
+            .heading {
+                align-items: flex-start;
+                gap: 1.2rem;
+
+                .title {
+                    font-size: 2.4rem;
+                }
+
+                img {
+                    width: 28px;
+                    height: 28px;
+                    margin-top: 0.4rem;
+                }
+            }
+
+            .grid {
+                padding: 0.6rem;
+
+                .card {
+                    padding: 1.4rem;
+
+                    .question {
+                        font-size: $fs-18;
+                    }
+
+                    .answer {
+                        font-size: $fs-14;
+                    }
+                }
+            }
+        }
+    }
+}

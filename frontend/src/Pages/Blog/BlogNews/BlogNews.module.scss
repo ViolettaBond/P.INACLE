@@ -1,0 +1,217 @@
+@use '../../../Styles/mixin' as *;
+@use '../../../Styles/variables' as *;
+
+.blogNews {
+    width: 100%;
+    padding: 12rem 0 8rem;
+    background: $gray13;
+
+    .container {
+        @include container;
+        @include flex-column;
+        gap: 6rem;
+
+        .header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 4rem;
+
+            .title {
+                @include flex-center;
+                justify-content: flex-start;
+                gap: 1.6rem;
+                font-family: $clash;
+                font-size: clamp(3.6rem, 5vw, 6.4rem);
+                font-weight: $fw-semibold;
+                line-height: 1.05;
+                letter-spacing: -0.02em;
+                color: $white;
+
+                img {
+                    width: clamp(2.4rem, 3vw, 3.6rem);
+                    height: auto;
+                }
+            }
+
+            .tabs {
+                @include flex-center;
+                gap: 0.4rem;
+                padding: 0.6rem;
+                background: $gray08;
+                border: 1px solid $gray10;
+                border-radius: 1.2rem;
+
+                button {
+                    padding: 1.2rem 2rem;
+                    font-family: $satoshi;
+                    font-size: $fs-18;
+                    font-weight: $fw-medium;
+                    color: $gray04;
+                    background: transparent;
+                    border: none;
+                    border-radius: 0.8rem;
+                    cursor: pointer;
+                    white-space: nowrap;
+                    transition: 0.2s;
+
+                    &:hover {
+                        color: $white;
+                    }
+
+                    &.active {
+                        color: $white;
+                        background: $gray10;
+                    }
+                }
+            }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.4rem;
+
+            .card {
+                @include flex-column;
+                gap: 1.6rem;
+                padding: 1.6rem;
+                background: $gray08;
+                border: 1px solid $gray10;
+                border-radius: 1.6rem;
+
+                .imageWrapper {
+                    width: 100%;
+                    aspect-ratio: 4 / 3;
+                    overflow: hidden;
+                    border-radius: 1.2rem;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                .cardBody {
+                    @include flex-column;
+                    gap: 1.6rem;
+                    align-items: flex-start;
+
+                    .tag {
+                        padding: 0.6rem 1.4rem;
+                        font-family: $satoshi;
+                        font-size: $fs-18;
+                        color: $gray04;
+                        background: $gray10;
+                        border: 1px solid $gray10;
+                        border-radius: 0.6rem;
+                    }
+
+                    .cardTitle {
+                        font-family: $clash;
+                        font-size: $fs-24;
+                        font-weight: $fw-semibold;
+                        line-height: 1.2;
+                        color: $white;
+                    }
+
+                    .cardFooter {
+                        @include flex-center-between;
+                        width: 100%;
+                        gap: 1.6rem;
+
+                        .date {
+                            @include flex-center;
+                            gap: 0.8rem;
+                            font-family: $satoshi;
+                            font-size: $fs-18;
+                            color: $gray04;
+
+                            .dateIcon {
+                                width: 1.8rem;
+                                height: auto;
+                            }
+                        }
+
+                        .readMore {
+                            font-family: $satoshi;
+                            font-size: $fs-18;
+                            color: $gray04;
+                            transition: 0.2s;
+                        }
+                    }
+                }
+            }
+        }
+
+        .more {
+            display: grid;
+            justify-items: center;
+
+            button {
+                padding: 1.6rem 3.2rem;
+                font-family: $satoshi;
+                font-size: $fs-18;
+                font-weight: $fw-medium;
+                color: $gray04;
+                background: $gray08;
+                border: 1px solid $gray10;
+                border-radius: 0.8rem;
+                cursor: pointer;
+                transition: 0.2s;
+
+                &:hover {
+                    color: $white;
+                    background: $gray10;
+                }
+            }
+        }
+    }
+
+    @include breakpoint(lg) {
+        .container {
+            .header {
+                grid-template-columns: 1fr;
+                align-items: start;
+                gap: 2.4rem;
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    }
+
+    @include breakpoint(sm) {
+        padding: 8rem 2.4rem 6rem;
+
+        .container {
+            gap: 4rem;
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header .tabs {
+                width: 100%;
+                overflow-x: auto;
+                justify-content: flex-start;
+            }
+        }
+    }
+
+    @include breakpoint(xs) {
+        padding: 6rem 1.6rem 4rem;
+
+        .container {
+            .grid .card {
+                padding: 1.4rem;
+            }
+
+            .header .tabs button {
+                padding: 1rem 1.6rem;
+            }
+        }
+    }
+}

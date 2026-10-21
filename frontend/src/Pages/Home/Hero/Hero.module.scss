@@ -1,0 +1,251 @@
+@use '../../../Styles/mixin' as *;
+@use '../../../Styles/variables' as *;
+
+.hero {
+    position: relative;
+    width: 100%;
+    padding: 18rem 6.4rem 0;
+    background-color: black;
+    background-image: url(../../../assets/background.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+
+    .container {
+        @include container;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .content {
+        @include flex-column;
+        gap: 3.2rem;
+        max-width: 76rem;
+
+        .title {
+            font-family: $clash;
+            font-size: clamp(4.2rem, 6.4vw, 8rem);
+            font-weight: $fw-semibold;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            color: $white;
+        }
+
+        .subtitle {
+            max-width: 60rem;
+            font-family: $satoshi;
+            font-size: $fs-18;
+            line-height: 1.55;
+            color: $white60;
+        }
+
+        .actions {
+            @include flex-center;
+            justify-content: flex-start;
+            gap: 1.6rem;
+            flex-wrap: wrap;
+        }
+    }
+
+    .visual {
+        position: relative;
+        display: grid;
+        height: 70rem;
+
+        .building {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            object-fit: fill;
+            object-position: center;
+            pointer-events: none;
+            filter: drop-shadow(0 20px 60px rgb(255 82 0 / 25%));
+        }
+
+        .floating {
+            position: absolute;
+            z-index: 3;
+            pointer-events: none;
+
+            &.top {
+                top: 20rem;
+                right: -2rem;
+            }
+
+            &.bottom {
+                bottom: 8rem;
+                left: -3rem;
+            }
+        }
+    }
+
+    @include breakpoint(xl) {
+        padding-top: 16rem;
+
+        .visual .floating {
+            &.top {
+                right: 0;
+            }
+
+            &.bottom {
+                left: 0;
+            }
+        }
+    }
+
+    @include breakpoint(lg) {
+        padding-top: 14rem;
+
+        .container {
+            grid-template-columns: 1fr;
+            gap: 6rem;
+        }
+
+        .content {
+            order: 1;
+            max-width: 100%;
+        }
+
+        .visual {
+            order: 2;
+            height: 60rem;
+
+            .floating {
+                &.top {
+                    top: 6rem;
+                    right: 4rem;
+                }
+
+                &.bottom {
+                    bottom: 4rem;
+                    left: 2rem;
+                }
+            }
+        }
+    }
+
+    @include breakpoint(md) {
+        .content {
+            gap: 2.4rem;
+
+            .title {
+                font-size: clamp(4rem, 8vw, 6rem);
+            }
+
+            .subtitle {
+                font-size: $fs-16;
+            }
+        }
+
+        .visual {
+            height: 54rem;
+
+            .floating {
+                &.top {
+                    top: 4rem;
+                    right: 2rem;
+                }
+
+                &.bottom {
+                    bottom: 3rem;
+                    left: 1rem;
+                }
+            }
+        }
+    }
+
+    @include breakpoint(sm) {
+        padding: 11rem 2.4rem 0;
+
+        .container {
+            gap: 4rem;
+        }
+
+        .content {
+            gap: 2rem;
+
+            .title {
+                font-size: clamp(3.4rem, 10vw, 4.8rem);
+            }
+
+            .subtitle {
+                font-size: $fs-14;
+            }
+
+            .actions {
+                gap: 1rem;
+            }
+        }
+
+        .visual {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            height: auto;
+            overflow: visible;
+
+            .building {
+                position: relative;
+                height: 50rem;
+                object-position: center top;
+            }
+
+            .floating {
+                position: relative;
+                width: 100%;
+                max-width: 34rem;
+
+                &.top {
+                    top: auto;
+                    right: auto;
+                    justify-self: end;
+                }
+
+                &.bottom {
+                    bottom: auto;
+                    left: auto;
+                    justify-self: start;
+                }
+            }
+        }
+    }
+
+    @include breakpoint(xs) {
+        padding: 10rem 1.6rem 0;
+
+        .content {
+            .title {
+                font-size: clamp(3rem, 11vw, 4rem);
+            }
+
+            .subtitle {
+                font-size: $fs-14;
+            }
+        }
+
+        .visual {
+            .building {
+                height: 42rem;
+            }
+
+            .floating {
+                max-width: 28rem;
+            }
+        }
+    }
+
+    @include breakpoint(xxs) {
+        .visual {
+            .building {
+                height: 36rem;
+            }
+
+            .floating {
+                max-width: 100%;
+            }
+        }
+    }
+}

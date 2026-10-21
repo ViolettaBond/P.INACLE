@@ -1,0 +1,433 @@
+@use '../../Styles/mixin' as *;
+@use '../../Styles/variables' as *;
+
+.contactPage {
+    position: relative;
+    width: 100%;
+    padding: 14rem 0 8rem;
+    background: #030302 url('/src/assets/background.jpg') no-repeat center top / 192rem auto;
+
+    .header {
+        width: 100%;
+        border-bottom: 1px solid #141414;
+        margin-bottom: 6rem;
+        padding: 4rem 6.4rem;
+
+        .headerInner {
+            @include flex-column;
+            align-items: center;
+            text-align: center;
+            gap: 1.6rem;
+            max-width: 84rem;
+            margin: 0 auto;
+        }
+
+        .mainTitle {
+            font-family: $clash;
+            font-size: clamp(4rem, 6vw, 6.4rem);
+            font-weight: $fw-semibold;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: $white;
+        }
+
+        .subtitle {
+            font-family: $satoshi;
+            font-size: 1.8rem;
+            line-height: 1.6;
+            color: $white60;
+        }
+    }
+
+    .container {
+        @include container;
+        @include flex-column;
+        gap: 6rem;
+    }
+
+    .heroImage {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 7;
+        border-radius: 2.4rem;
+        overflow: hidden;
+        border: 1px solid #141414;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .layoutGrid {
+        display: grid;
+        grid-template-columns: 32rem 1fr;
+        gap: 6.4rem;
+        align-items: start;
+    }
+
+    .sidebar {
+        @include flex-column;
+        gap: 4rem;
+
+        .infoBlock {
+            @include flex-column;
+            gap: 1.6rem;
+        }
+
+        .blockTitle {
+            font-family: $clash;
+            font-size: 2.4rem;
+            font-weight: $fw-semibold;
+            color: $white;
+        }
+
+        .pill {
+            @include flex-center;
+            justify-content: flex-start;
+            padding: 1.6rem 2rem;
+            background: #0d0d0c;
+            border: 1px solid #141414;
+            border-radius: 0.8rem;
+            font-family: $satoshi;
+            font-size: 1.8rem;
+            color: $white80;
+        }
+
+        .address {
+            font-family: $satoshi;
+            font-size: 1.8rem;
+            line-height: 1.5;
+            color: $white60;
+        }
+
+        .directionsBtn {
+            padding: 1.4rem;
+            background: #141414;
+            border: 1px solid #242424;
+            border-radius: 0.8rem;
+            color: $white;
+            font-family: $satoshi;
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: 0.2s;
+
+            &:hover {
+                background: #242424;
+            }
+        }
+
+        .socials {
+            display: flex;
+            gap: 1.2rem;
+
+            a {
+                @include flex-center;
+                width: 4.5rem;
+                height: 4.5rem;
+                background: #141414;
+                border: 1px solid #242424;
+                border-radius: 0.8rem;
+                transition: 0.2s;
+
+                img {
+                    width: 1.8rem;
+                    height: auto;
+                }
+
+                &:hover {
+                    background: #242424;
+                }
+            }
+        }
+    }
+
+    .formSection {
+        @include flex-column;
+        gap: 3.2rem;
+
+        .formTitle {
+            @include flex-center;
+            justify-content: flex-start;
+            gap: 1.6rem;
+            font-family: $clash;
+            font-size: clamp(2.8rem, 4vw, 4rem);
+            font-weight: $fw-semibold;
+            color: $white;
+        }
+
+        .orangeHourglass {
+            width: 1.6rem;
+            height: 2.2rem;
+            background: #cf5525;
+            clip-path: polygon(0% 0%, 100% 0%, 10% 50%, 100% 100%, 0% 100%, 90% 50%);
+        }
+
+        .form {
+            @include flex-column;
+            gap: 2.4rem;
+            padding: 4rem;
+            background: #0d0d0c;
+            border: 1px solid #141414;
+            border-radius: 1.6rem;
+        }
+
+        .inputRow {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+
+            @include breakpoint(lg) {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .inputWrapper {
+            position: relative;
+            width: 100%;
+
+            .inputIcon {
+                position: absolute;
+                left: 2rem;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 2rem;
+                height: 2rem;
+                opacity: 0.5;
+                pointer-events: none;
+                z-index: 2;
+            }
+
+            input,
+            select {
+                width: 100%;
+                padding: 1.8rem 2rem 1.8rem 5.2rem;
+                background: #080807;
+                border: 1px solid #141414;
+                border-radius: 0.8rem;
+                font-family: $satoshi;
+                font-size: 1.8rem;
+                color: $white;
+                outline: none;
+
+                &::placeholder {
+                    color: $white40;
+                }
+            }
+
+            select {
+                appearance: none;
+                cursor: pointer;
+            }
+        }
+
+        .phoneInputContainer {
+            width: 100%;
+            position: relative;
+
+            :global {
+                .react-phone-input {
+                    font-family: $satoshi;
+                    width: 100% !important;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                }
+
+                .flag-dropdown {
+                    position: absolute !important;
+                    top: 1px !important;
+                    bottom: 1px !important;
+                    left: 1px !important;
+                    width: 7rem !important; // Фиксированная ширина блока флага
+                    background: transparent !important;
+                    border: none !important;
+                    border-radius: 0.8rem 0 0 0.8rem !important;
+                    display: flex !important;
+                    align-items: center !important;
+                    justify-content: center !important;
+
+                    &:hover,
+                    &.open {
+                        background: rgba(255, 255, 255, 0.03) !important;
+                    }
+                }
+
+                .selected-flag {
+                    background: transparent !important;
+                    padding: 0 !important;
+                    width: 100% !important;
+                    height: 100% !important;
+                    display: flex !important;
+                    align-items: center !important;
+                    justify-content: center !important;
+                    gap: 0.6rem !important;
+
+                    .flag {
+                        scale: 1.2;
+                    }
+
+                    .arrow {
+                        position: static !important;
+                        border-top-color: $white60 !important;
+                        margin-top: 0 !important;
+
+                        &.up {
+                            border-bottom-color: $white60 !important;
+                        }
+                    }
+                }
+
+                .form-control {
+                    width: 100% !important;
+                    height: 5.8rem !important;
+                    padding: 1.8rem 2rem 1.8rem 11.5rem !important; // Огромный отступ слева под флаг + иконку
+                    background: #080807
+                        url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' fill='none' viewBox='0 0 24 24' stroke='%23ffffff' stroke-opacity='0.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 5a2 2 0 012-2h3.28a1 1 0 01.94.72l.54 2.22a1 1 0 01-.25.96l-1.4 1.4a15.05 15.05 0 006.58 6.58l1.4-1.4a1 1 0 01.96-.25l2.22.54a1 1 0 01.72.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z'/%3E%3C/svg%3E")
+                        no-repeat 7.5rem center / 2rem 2rem !important; // Иконка встает ровно после флага
+                    border: 1px solid #141414 !important;
+                    border-radius: 0.8rem !important;
+                    font-size: 1.8rem !important;
+                    color: $white !important;
+                    font-family: $satoshi !important;
+
+                    &:focus {
+                        border-color: #cf5525 !important;
+                        box-shadow: none !important;
+                    }
+                }
+
+                .country-list {
+                    background-color: #0d0d0c !important;
+                    border: 1px solid #242424 !important;
+                    border-radius: 0.8rem !important;
+                    color: $white !important;
+                    margin-top: 0.5rem !important;
+                    z-index: 10 !important;
+
+                    .country {
+                        padding: 1.2rem !important;
+                        transition: 0.2s !important;
+
+                        &:hover {
+                            background-color: #141414 !important;
+                        }
+
+                        &.highlight {
+                            background-color: #cf5525 !important;
+                            color: $white !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        .textareaWrapper {
+            position: relative;
+            width: 100%;
+
+            .textareaIcon {
+                position: absolute;
+                left: 2rem;
+                top: 2.2rem;
+                width: 2rem;
+                height: 2rem;
+                opacity: 0.5;
+                pointer-events: none;
+            }
+
+            textarea {
+                width: 100%;
+                height: 16rem;
+                padding: 2rem 2rem 2rem 5.2rem;
+                background: #080807;
+                border: 1px solid #141414;
+                border-radius: 0.8rem;
+                font-family: $satoshi;
+                font-size: 1.8rem;
+                color: $white;
+                outline: none;
+                resize: none;
+
+                &::placeholder {
+                    color: $white40;
+                }
+            }
+        }
+
+        .formFooter {
+            @include flex-center-between;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .checkboxLabel {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: $satoshi;
+            font-size: 1.6rem;
+            color: $white40;
+            cursor: pointer;
+
+            input {
+                accent-color: #cf5525;
+                width: 1.8rem;
+                height: 1.8rem;
+            }
+        }
+
+        .submitBtn {
+            @include flex-center;
+            gap: 1rem;
+            padding: 1.6rem 3.2rem;
+            background: #cf5525;
+            border: none;
+            border-radius: 0.8rem;
+            color: $white;
+            font-family: $satoshi;
+            font-size: 1.8rem;
+            font-weight: $fw-medium;
+            cursor: pointer;
+            transition: 0.2s;
+
+            img {
+                width: 1.6rem;
+                height: auto;
+            }
+            &:hover {
+                background: filter brightness(0.9);
+            }
+        }
+    }
+    @include breakpoint(lg) {
+        padding: 12rem 0 6rem;
+        .container {
+            padding: 0 4rem;
+        }
+        .layoutGrid {
+            grid-template-columns: 1fr;
+            gap: 5rem;
+        }
+    }
+    @include breakpoint(sm) {
+        padding: 10rem 0 5rem;
+        .container {
+            padding: 0 2.4rem;
+            gap: 4rem;
+        }
+        .formSection {
+            .form {
+                padding: 2.4rem 1.6rem;
+            }
+            .formFooter {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .submitBtn {
+                width: 100%;
+            }
+        }
+    }
+}

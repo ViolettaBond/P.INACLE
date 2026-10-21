@@ -1,0 +1,198 @@
+@use '../../../Styles/mixin' as *;
+@use '../../../Styles/variables' as *;
+
+.testimonials {
+    padding: 10rem 4.6rem;
+    background: $gray13;
+    border-top: 1px solid $gray10;
+
+    .container {
+        @include container;
+
+        .head {
+            @include flex-column;
+            align-items: center;
+            margin-bottom: 4.8rem;
+            text-align: center;
+
+            .title {
+                @include flex-center;
+                gap: 1.8rem;
+                font-family: $clash;
+                font-size: clamp(3.2rem, 4vw, 5.2rem);
+                font-weight: $fw-semibold;
+                line-height: 1.2;
+                color: $white;
+
+                .decoration {
+                    @include flex-column;
+                    align-items: center;
+                    gap: 0.5rem;
+                    transform: rotate(45deg);
+
+                    span {
+                        display: block;
+                        width: 1.2rem;
+                        height: 1.2rem;
+                        background: $orange;
+
+                        &:last-child {
+                            width: 1.8rem;
+                            height: 1.8rem;
+                        }
+                    }
+                }
+            }
+
+            .subtitle {
+                max-width: 68rem;
+                margin-top: 1.8rem;
+                font-family: $satoshi;
+                font-size: $fs-16;
+                line-height: 1.7;
+                color: $gray04;
+            }
+
+            .rating {
+                @include flex-center;
+                gap: 1.2rem;
+                margin-top: 2.8rem;
+
+                .avatars {
+                    display: flex;
+                    padding-left: 0.5rem;
+
+                    img {
+                        width: 5.2rem;
+                        height: 5.2rem;
+                        margin-left: -0.5rem;
+                        object-fit: cover;
+                        border: 2px solid $gray13;
+                        border-radius: 50%;
+                    }
+                }
+
+                .ratingInfo {
+                    @include flex-column;
+                    align-items: flex-start;
+                    gap: 0.3rem;
+
+                    .stars {
+                        font-size: 1.8rem;
+                        line-height: 1;
+                        letter-spacing: 0.1rem;
+                        color: #ffbd36;
+                    }
+
+                    span {
+                        font-family: $satoshi;
+                        font-size: $fs-16;
+                    }
+                }
+            }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.2rem;
+
+            .card {
+                display: grid;
+                grid-template-columns: 10rem minmax(0, 1fr);
+                align-items: start;
+                gap: 2.2rem;
+                padding: 1.6rem;
+                background: $gray13;
+                border: 1px solid $gray10;
+                border-radius: 1.3rem;
+
+                .avatar {
+                    width: 10rem;
+                    height: 10rem;
+                    object-fit: cover;
+                    border-radius: 1.2rem;
+                }
+
+                .content {
+                    @include flex-column;
+                    align-items: flex-start;
+                    gap: 1.8rem;
+                    min-width: 0;
+
+                    .text {
+                        width: 70%;
+                        font-family: $satoshi;
+                        font-size: $fs-20;
+                        font-weight: $fw-medium;
+                        line-height: 1.5;
+                        color: $white;
+                    }
+
+                    .author {
+                        font-family: $satoshi;
+                        font-size: $fs-18;
+                        line-height: 1.5;
+                        color: $gray04;
+                    }
+                }
+            }
+        }
+    }
+
+    @include breakpoint(lg) {
+        padding: 8rem 3rem;
+
+        .container .grid .card {
+            grid-template-columns: 5.6rem minmax(0, 1fr);
+            gap: 1.6rem;
+
+            .avatar {
+                width: 5.6rem;
+                height: 5.6rem;
+            }
+        }
+    }
+
+    @include breakpoint(sm) {
+        padding: 6rem 2rem;
+
+        .container {
+            .head .title {
+                flex-wrap: wrap;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+
+                .card {
+                    padding: 1.4rem;
+                }
+            }
+        }
+    }
+
+    @include breakpoint(xs) {
+        padding: 5rem 1.6rem;
+
+        .container {
+            .head .rating {
+                gap: 0.8rem;
+            }
+
+            .grid .card {
+                grid-template-columns: 4.8rem minmax(0, 1fr);
+                gap: 1.2rem;
+
+                .avatar {
+                    width: 4.8rem;
+                    height: 4.8rem;
+                }
+
+                .content .text {
+                    font-size: $fs-18;
+                }
+            }
+        }
+    }
+}

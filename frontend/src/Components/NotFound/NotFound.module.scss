@@ -1,0 +1,60 @@
+@use '../../Styles/mixin' as *;
+@use '../../Styles/variables' as *;
+
+.notFound {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    @include flex-center;
+    padding: 12rem 0;
+    overflow: hidden;
+    background: $gray13;
+
+    .glow {
+        position: absolute;
+        top: -20%;
+        right: -10%;
+        width: 80rem;
+        height: 80rem;
+        background: radial-gradient(circle, rgb(255 82 0 / 18%) 0%, transparent 60%);
+        pointer-events: none;
+    }
+
+    .container {
+        @include container;
+        @include flex-column-center;
+        position: relative;
+        z-index: 2;
+        gap: 3.2rem;
+        text-align: center;
+    }
+
+    .code {
+        font-family: $clash;
+        font-size: clamp(9.6rem, 14vw, 20rem);
+        font-weight: $fw-semibold;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        color: $white;
+    }
+
+    .title {
+        font-family: $clash;
+        font-size: clamp(3.6rem, 5vw, 6.4rem);
+        font-weight: $fw-semibold;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        color: $white;
+    }
+
+    .actions {
+        @include flex-center;
+        margin-top: 0.8rem;
+    }
+
+    @include breakpoint(sm) {
+        padding: 10rem 0;
+
+        .container { padding: 0 2.4rem; }
+    }
+}

@@ -1,0 +1,274 @@
+@use '../../../Styles/mixin' as *;
+@use '../../../Styles/variables' as *;
+
+.projectInfo {
+    width: 100%;
+    padding: 6rem 6.4rem 12rem;
+    background: $gray13;
+
+    .container {
+        @include container;
+        display: grid;
+        grid-template-columns: 1fr 38rem;
+        gap: 8rem;
+        align-items: start;
+    }
+
+    .content {
+        @include flex-column;
+        gap: 8rem;
+
+        .block {
+            @include flex-column;
+            gap: 2.4rem;
+
+            .blockTitle {
+                font-family: $clash;
+                font-size: clamp(3.2rem, 4vw, 4.8rem);
+                font-weight: $fw-semibold;
+                line-height: 1.1;
+                letter-spacing: -0.02em;
+                color: $white;
+            }
+
+            .blockText {
+                font-family: $satoshi;
+                font-size: $fs-18;
+                line-height: 1.6;
+                color: $gray04;
+            }
+
+            .list {
+                @include flex-column;
+                gap: 1.2rem;
+
+                li {
+                    position: relative;
+                    padding-left: 2.4rem;
+                    font-family: $satoshi;
+                    font-size: $fs-18;
+                    line-height: 1.6;
+                    color: $gray04;
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: 1rem;
+                        left: 0;
+                        width: 0.8rem;
+                        height: 0.8rem;
+                        background: $gray04;
+                        border-radius: 50%;
+                    }
+
+                    strong {
+                        color: $white;
+                        font-weight: $fw-semibold;
+                    }
+                }
+            }
+
+            .imageSingle {
+                width: 100%;
+                aspect-ratio: 16 / 9;
+                overflow: hidden;
+                border: 1px solid $gray10;
+                border-radius: 1.6rem;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .imagePair {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.6rem;
+
+                .image {
+                    aspect-ratio: 4 / 3;
+                    overflow: hidden;
+                    border: 1px solid $gray10;
+                    border-radius: 1.6rem;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+
+    .sidebar {
+        position: sticky;
+        top: 12rem;
+        @include flex-column;
+        gap: 3.2rem;
+
+        .card {
+            @include flex-column;
+            gap: 1.6rem;
+            padding: 2.4rem;
+            background: $gray08;
+            border: 1px solid $gray10;
+            border-radius: 1.6rem;
+
+            .cardTitle {
+                font-family: $clash;
+                font-size: $fs-24;
+                font-weight: $fw-semibold;
+                color: $white;
+            }
+
+            .cardList {
+                @include flex-column;
+                gap: 1.2rem;
+
+                li {
+                    font-family: $satoshi;
+                    font-size: $fs-18;
+                    color: $gray04;
+                    cursor: pointer;
+                    transition: 0.2s;
+
+                    &:hover {
+                        color: $white;
+                    }
+                }
+            }
+        }
+
+        .share {
+            @include flex-center;
+            justify-content: space-between;
+            gap: 1.2rem;
+            padding: 1.6rem 2rem;
+            background: $gray08;
+            border: 1px solid $gray10;
+            border-radius: 1.2rem;
+
+            .shareLabel {
+                font-family: $satoshi;
+                font-size: $fs-18;
+                font-weight: $fw-medium;
+                color: $white;
+            }
+
+            .shareIcons {
+                @include flex-center;
+                gap: 0.8rem;
+
+                a {
+                    @include flex-center;
+                    width: 3.2rem;
+                    height: 3.2rem;
+                    color: $gray04;
+                    transition: 0.2s;
+
+                    img {
+                        width: 1.8rem;
+                        height: auto;
+                    }
+
+                    &:hover {
+                        color: $white;
+                    }
+                }
+            }
+        }
+
+        .read {
+            @include flex-column;
+            gap: 1rem;
+
+            .readLabel {
+                font-family: $satoshi;
+                font-size: $fs-18;
+                font-weight: $fw-medium;
+                color: $white;
+            }
+
+            .readBar {
+                width: 100%;
+                height: 0.4rem;
+                overflow: hidden;
+                background: $gray10;
+                border-radius: 999px;
+
+                &::after {
+                    content: '';
+                    display: block;
+                    width: 40%;
+                    height: 100%;
+                    background: $orange;
+                }
+            }
+        }
+
+        .cta {
+            @include flex-column;
+            gap: 1.6rem;
+
+            .ctaText {
+                font-family: $satoshi;
+                font-size: $fs-18;
+                color: $gray04;
+            }
+
+            .ctaBtn {
+                @include flex-center;
+                padding: 1.6rem;
+                font-family: $satoshi;
+                font-size: $fs-18;
+                font-weight: $fw-medium;
+                color: $white;
+                background: $orange;
+                border: none;
+                border-radius: 0.8rem;
+                cursor: pointer;
+                transition: 0.2s;
+
+                &:hover {
+                    filter: brightness(0.9);
+                }
+            }
+        }
+    }
+
+    @include breakpoint(lg) {
+        padding: 4rem 4rem 10rem;
+
+        .container {
+            grid-template-columns: 1fr;
+            gap: 6rem;
+        }
+
+        .sidebar {
+            position: static;
+        }
+    }
+
+    @include breakpoint(sm) {
+        padding: 3rem 2.4rem 8rem;
+
+        .content {
+            gap: 6rem;
+
+            .block {
+                gap: 2rem;
+
+                .imagePair {
+                    grid-template-columns: 1fr;
+                }
+            }
+        }
+    }
+
+    @include breakpoint(xs) {
+        padding: 3rem 1.6rem 6rem;
+    }
+}

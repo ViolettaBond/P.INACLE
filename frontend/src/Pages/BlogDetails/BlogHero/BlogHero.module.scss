@@ -1,0 +1,140 @@
+@use '../../../Styles/mixin' as *;
+@use '../../../Styles/variables' as *;
+
+.blogHero {
+    width: 100%;
+    padding: 12rem 0 6rem;
+    background: $gray13;
+
+    .container {
+        @include container;
+        @include flex-column;
+        gap: 4rem;
+
+        .back {
+            @include flex-center;
+            justify-content: flex-start;
+            align-self: flex-start;
+            gap: 0.8rem;
+            padding: 1.2rem 1.8rem;
+            font-family: $satoshi;
+            font-size: $fs-18;
+            font-weight: $fw-medium;
+            color: $gray04;
+            background: $gray08;
+            border: 1px solid $gray10;
+            border-radius: 0.8rem;
+            transition: 0.2s;
+
+            img {
+                width: 1.8rem;
+                height: auto;
+            }
+
+            &:hover {
+                color: $white;
+                background: $gray10;
+            }
+        }
+
+        .head {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            align-items: end;
+            gap: 4rem;
+
+            .title {
+                grid-column: 1 / -1;
+                font-family: $clash;
+                font-size: clamp(4rem, 5.5vw, 6.4rem);
+                font-weight: $fw-semibold;
+                line-height: 1.05;
+                letter-spacing: -0.02em;
+                color: $white;
+            }
+
+            .desc {
+                font-family: $satoshi;
+                font-size: $fs-18;
+                line-height: 1.6;
+                color: $gray04;
+            }
+
+            .badges {
+                @include flex-center;
+                justify-content: flex-end;
+                flex-wrap: wrap;
+                gap: 1.2rem;
+
+                .badge {
+                    @include flex-center;
+                    gap: 0.8rem;
+                    padding: 1.2rem 1.8rem;
+                    font-family: $satoshi;
+                    font-size: $fs-18;
+                    color: $gray04;
+                    background: $gray08;
+                    border: 1px solid $gray10;
+                    border-radius: 0.8rem;
+                    white-space: nowrap;
+
+                    img {
+                        width: 1.8rem;
+                        height: auto;
+                    }
+
+                    .avatar {
+                        width: 2.4rem;
+                        height: 2.4rem;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+
+        .cover {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border: 1px solid $gray10;
+            border-radius: 2.4rem;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    @include breakpoint(lg) {
+        padding: 10rem 4rem 4rem;
+
+        .container .head {
+            grid-template-columns: 1fr;
+            gap: 2.4rem;
+
+            .badges {
+                justify-content: flex-start;
+            }
+        }
+    }
+
+    @include breakpoint(sm) {
+        padding: 8rem 2.4rem 3rem;
+
+        .container {
+            gap: 3rem;
+
+            .cover {
+                aspect-ratio: 4 / 3;
+                border-radius: 1.6rem;
+            }
+        }
+    }
+
+    @include breakpoint(xs) {
+        padding: 6rem 1.6rem 3rem;
+    }
+}

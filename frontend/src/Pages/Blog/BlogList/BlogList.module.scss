@@ -1,0 +1,234 @@
+@use '../../../Styles/mixin' as *;
+@use '../../../Styles/variables' as *;
+
+.blogSection {
+    width: 100%;
+    background: $gray13;
+
+    .header {
+        width: 100%;
+        padding: 12rem 0 6rem;
+        background-image:
+            linear-gradient(180deg, transparent 0%, transparent 40%, $gray13 100%),
+            url('../../../src/assets/background.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+
+        .headerInner {
+            @include container;
+            @include flex-column;
+            gap: 1.6rem;
+            max-width: 76rem;
+        }
+
+        .mainTitle {
+            font-family: $clash;
+            font-size: clamp(4rem, 6vw, 6.4rem);
+            font-weight: $fw-semibold;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            color: $white;
+        }
+
+        .subtitle {
+            font-family: $satoshi;
+            font-size: $fs-20;
+            line-height: 1.6;
+            color: $gray04;
+        }
+    }
+
+    .container {
+        @include container;
+        @include flex-column;
+        gap: 4rem;
+        padding: 6rem 0 8rem;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.4rem;
+    }
+
+    .card {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 2.4rem;
+        padding: 2.4rem;
+        border: 1px solid $gray10;
+        border-radius: 1.6rem;
+
+        .imageWrapper {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            border-radius: 1.2rem;
+            border: 1px solid $gray10;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .cardBody {
+            @include flex-column;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0.4rem 0;
+        }
+
+        .tag {
+            padding: 0.6rem 1.4rem;
+            font-family: $satoshi;
+            font-size: $fs-18;
+            color: $gray04;
+            background: $gray10;
+            border: 1px solid $gray10;
+            border-radius: 0.6rem;
+        }
+
+        .description {
+            margin: 1.6rem 0;
+            font-family: $satoshi;
+            font-size: $fs-18;
+            line-height: 1.6;
+            color: $gray04;
+        }
+
+        .cardFooter {
+            @include flex-center-between;
+            width: 100%;
+
+            .date {
+                @include flex-center;
+                gap: 0.8rem;
+                font-family: $satoshi;
+                font-size: $fs-18;
+                color: $gray04;
+
+                .dateIcon {
+                    width: 1.8rem;
+                    height: auto;
+                }
+            }
+
+            .lineLink {
+                width: 3.2rem;
+                height: 1px;
+                background-color: $gray04;
+            }
+        }
+    }
+
+    .controls {
+        @include flex-center-between;
+        width: 100%;
+    }
+
+    .pagination {
+        font-family: $satoshi;
+        font-size: $fs-18;
+        color: $gray04;
+    }
+
+    .arrows {
+        display: flex;
+        gap: 1.2rem;
+
+        .arrow {
+            @include flex-center;
+            width: 4.5rem;
+            height: 4.5rem;
+            font-size: $fs-18;
+            color: $white;
+            background: $gray08;
+            border: 1px solid $gray10;
+            border-radius: 0.6rem;
+            cursor: pointer;
+            transition: 0.2s;
+
+            &:hover:not(.disabled) {
+                background: $gray10;
+                color: $orange;
+            }
+
+            &.disabled {
+                opacity: 0.3;
+                cursor: not-allowed;
+            }
+        }
+    }
+
+    @include breakpoint(lg) {
+        .header {
+            padding: 10rem 0 5rem;
+        }
+
+        .container {
+            padding: 5rem 0 8rem;
+        }
+
+        .grid {
+            grid-template-columns: 1fr;
+        }
+
+        .card {
+            grid-template-columns: 1fr 1.2fr;
+            gap: 2rem;
+        }
+    }
+
+    @include breakpoint(md) {
+        .card {
+            grid-template-columns: 1fr;
+            gap: 1.6rem;
+        }
+    }
+
+    @include breakpoint(sm) {
+        .header {
+            padding: 8rem 2.4rem 4rem;
+        }
+
+        .container {
+            padding: 4rem 2.4rem 6rem;
+        }
+
+        .headerInner {
+            max-width: 100%;
+        }
+
+        .header .subtitle {
+            font-size: $fs-18;
+        }
+
+        .controls {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.6rem;
+        }
+
+        .arrows .arrow {
+            width: 4rem;
+            height: 4rem;
+        }
+    }
+
+    @include breakpoint(xs) {
+        .header {
+            padding: 6rem 1.6rem 3rem;
+        }
+
+        .container {
+            padding: 3rem 1.6rem 5rem;
+        }
+
+        .card {
+            padding: 1.6rem;
+        }
+    }
+}

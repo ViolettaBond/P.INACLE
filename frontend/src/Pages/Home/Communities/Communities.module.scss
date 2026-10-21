@@ -1,0 +1,158 @@
+@use '../../../Styles/mixin' as *;
+@use '../../../Styles/variables' as *;
+
+.communities {
+    position: relative;
+    width: 100%;
+    padding: 12rem 6.4rem;
+    overflow: hidden;
+    background: $orange;
+
+    .container {
+        @include container;
+        position: relative;
+        z-index: 2;
+        @include flex-column-center;
+        gap: 3.2rem;
+        text-align: center;
+    }
+
+    .title {
+        width: 60%;
+        @include flex-center;
+        flex-wrap: wrap;
+        gap: 1.6rem;
+        font-family: $clash;
+        font-size: $fs-92;
+        font-weight: $fw-semibold;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        color: $white;
+
+        .pill {
+            width: clamp(6rem, 10vw, 10rem);
+            height: clamp(2.4rem, 4vw, 4rem);
+            background: $gray13;
+            border-radius: 999px;
+        }
+    }
+
+    .subtitle {
+        width: 785px;
+        font-family: $satoshi;
+        font-size: $fs-18;
+        line-height: 1.5;
+        color: #ffffff;
+    }
+
+    .rating {
+        display: grid;
+        grid-template-columns: auto auto;
+        align-items: center;
+        gap: 1.6rem;
+
+        .avatars {
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+
+            img {
+                width: 5.0rem;
+                height: 5.0rem;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 2px solid $orange;
+
+                &:not(:first-child) {
+                    margin-left: -1.2rem;
+                }
+            }
+        }
+
+        .info {
+            display: grid;
+            gap: 0.4rem;
+            justify-items: start;
+
+            .stars {
+                display: grid;
+                grid-template-columns: repeat(5, auto);
+                gap: 0.2rem;
+
+                img {
+                    width: 1.3rem;
+                }
+            }
+
+            .label {
+                font-family: $satoshi;
+                font-size: $fs-12;
+                color: rgb(255 255 255 / 80%);
+            }
+        }
+    }
+
+    .left,
+    .right {
+        position: absolute;
+        top: 50%;
+        z-index: 1;
+        width: 22rem;
+        height: 26rem;
+        object-fit: cover;
+        border-radius: 1.6rem;
+        box-shadow: 0 20px 60px rgb(0 0 0 / 25%);
+    }
+
+    .left {
+        left: -2rem;
+        transform: translateY(-50%) rotate(-6deg);
+    }
+
+    .right {
+        right: -2rem;
+        transform: translateY(-50%) rotate(6deg);
+    }
+
+    @include breakpoint(lg) {
+        padding: 10rem 4rem;
+
+        .left,
+        .right {
+            width: 18rem;
+            height: 22rem;
+        }
+    }
+
+    @include breakpoint(md) {
+        padding: 9rem 3.2rem;
+
+        .left,
+        .right {
+            width: 14rem;
+            height: 18rem;
+        }
+    }
+
+    @include breakpoint(sm) {
+        padding: 8rem 2.4rem;
+
+        .left,
+        .right {
+            display: none;
+        }
+
+        .title .pill {
+            width: 5rem;
+            height: 2rem;
+        }
+
+        .rating {
+            grid-template-columns: 1fr;
+            justify-items: center;
+        }
+    }
+
+    @include breakpoint(xs) {
+        padding: 7rem 1.6rem;
+    }
+}

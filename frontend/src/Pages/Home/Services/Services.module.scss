@@ -1,0 +1,212 @@
+@use '../../../Styles/mixin' as *;
+@use '../../../Styles/variables' as *;
+
+.services {
+    width: 100%;
+    padding: 10rem 6.4rem;
+    background: $gray13;
+
+    .container {
+        @include container;
+        @include flex-column;
+        gap: 5.6rem;
+    }
+
+    .head {
+        @include flex-column;
+        align-items: center;
+        text-align: center;
+        gap: 1.6rem;
+    }
+
+    .title {
+        @include flex-center;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+
+        font-family: $clash;
+        font-size: clamp(3.2rem, 5vw, 6.4rem);
+        font-weight: $fw-semibold;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        color: $white;
+    }
+
+    .star {
+        color: $orange;
+        font-size: 0.85em;
+        line-height: 1;
+    }
+
+    .subtitle {
+        max-width: 60rem;
+        font-family: $satoshi;
+        font-size: $fs-14;
+        font-weight: $fw-regular;
+        line-height: 1.7;
+        color: $white60;
+    }
+
+    .filters {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 1.6rem;
+        padding: 0.5rem;
+
+        background: $gray08;
+        border: 1px solid $gray10;
+        border-radius: 1rem;
+    }
+
+    .filter {
+        padding: 1.2rem 2rem;
+
+        font-family: $satoshi;
+        font-size: $fs-12;
+        font-weight: $fw-medium;
+        color: $white80;
+
+        background: transparent;
+        border: 1px solid transparent;
+        border-radius: 0.7rem;
+        cursor: pointer;
+        transition: 0.2s;
+
+        &:hover {
+            color: $white;
+            background: $gray10;
+        }
+    }
+
+    .active {
+        color: $white;
+        background: #080807;
+        border-color: $gray10;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 2.4rem;
+    }
+
+    .card {
+        @include flex-column;
+        align-items: flex-start;
+        gap: 1.6rem;
+
+        min-width: 0;
+        padding: 1.6rem;
+
+        background: $gray13;
+        border: 1px solid $gray10;
+        border-radius: 1.6rem;
+
+        transition: border-color 0.2s;
+
+        &:hover {
+            border-color: $white40;
+        }
+    }
+
+    .image {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        border-radius: 1.2rem;
+    }
+
+    .name {
+        font-family: $clash;
+        font-size: $fs-20;
+        font-weight: $fw-medium;
+        line-height: 1.2;
+        color: $white;
+    }
+
+    .description {
+        font-family: $satoshi;
+        font-size: $fs-14;
+        font-weight: $fw-regular;
+        line-height: 1.6;
+        color: $white60;
+    }
+
+    .link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin-top: auto;
+        padding-top: 0.4rem;
+
+        font-family: $satoshi;
+        font-size: $fs-12;
+        font-weight: $fw-medium;
+        color: $white;
+
+        text-decoration: underline;
+        text-underline-offset: 0.4rem;
+
+        transition: color 0.2s;
+
+        span {
+            text-decoration: none;
+        }
+
+        &:hover {
+            color: $orange;
+        }
+    }
+
+    .message {
+        padding: 4rem 0;
+        font-family: $satoshi;
+        font-size: $fs-16;
+        text-align: center;
+        color: $white60;
+    }
+
+    @include breakpoint(lg) {
+        padding: 8rem 4rem;
+
+        .grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @include breakpoint(sm) {
+        padding: 6rem 2.4rem;
+
+        .container {
+            gap: 4rem;
+        }
+
+        .grid {
+            grid-template-columns: 1fr;
+        }
+
+        .title {
+            font-size: clamp(3rem, 7vw, 4.8rem);
+        }
+    }
+
+    @include breakpoint(xs) {
+        padding: 5rem 1.6rem;
+
+        .filters {
+            width: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter {
+            padding: 1rem 1.2rem;
+        }
+
+        .card {
+            padding: 1.2rem;
+        }
+    }
+}

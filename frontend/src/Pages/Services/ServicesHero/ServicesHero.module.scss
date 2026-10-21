@@ -1,0 +1,108 @@
+@use '../../../Styles/mixin' as *;
+@use '../../../Styles/variables' as *;
+
+.servicesHero {
+    width: 100%;
+    background-image: url(../../../assets/background.png);
+    background-repeat: no-repeat;
+    background-position: right 20px bottom 130px;
+    background-size: 100%;
+
+        padding: 4rem 6.4rem 6rem;
+
+    .header {
+        width: 100%;
+        display: flex;
+
+
+        .headerInner {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            align-items: end;
+            gap: 6.4rem;
+            max-width: 179.2rem; 
+            margin: 0 auto;
+        }
+
+        .mainTitle {
+            width: 60%;
+            font-family: $clash;
+            font-size: clamp(4rem, 5.5vw, 6.4rem);
+            font-weight: $fw-semibold;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            color: $white;
+        }
+
+        .subtitle {
+            display: flex;
+            
+            font-family: $satoshi;
+            font-size: 1.8rem;
+            line-height: 1.6;
+            color: $white60;
+            padding-bottom: 0.8rem;
+        }
+    }
+
+    .container {
+
+        @include container;
+        padding: 6rem 6.4rem; 
+        max-width: 179.2rem; 
+        margin: 0 auto;
+
+        .heroImage {
+            width: 100%;
+            height: auto;
+            border-radius: 2.4rem;
+            overflow: hidden;
+            border: 1px solid #141414;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    @include breakpoint(lg) {
+        .header {
+            padding: 4rem;
+
+            .headerInner {
+                grid-template-columns: 1fr;
+                gap: 2.4rem;
+            }
+        }
+
+        .container {
+            padding: 4rem;
+        }
+    }
+
+    @include breakpoint(sm) {
+        .header {
+            padding: 3rem 2.4rem;
+        }
+
+        .container {
+            padding: 3rem 2.4rem;
+
+            .heroImage {
+                border-radius: 1.6rem; 
+            }
+        }
+    }
+
+    @include breakpoint(xs) {
+        .header {
+            padding: 3rem 1.6rem;
+        }
+
+        .container {
+            padding: 3rem 1.6rem;
+        }
+    }
+}

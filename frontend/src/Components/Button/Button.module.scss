@@ -1,0 +1,37 @@
+@use '../../Styles/mixin' as *;
+@use '../../Styles/variables' as *;
+
+.btn {
+    @include flex-center;
+    padding: 1.6rem 2.8rem;
+    font-family: $satoshi;
+    font-size: $fs-16;
+    font-weight: $fw-medium;
+    color: $white;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: 0.25s ease;
+    white-space: nowrap;
+
+    &.primary {
+        background: $orange;
+
+        &:hover { 
+            filter: brightness(0.9); 
+        }
+    }
+
+    &.ghost {
+        background: $gray08;
+
+        &:hover { 
+            filter: brightness(1.1); 
+        }
+    }
+
+    @include breakpoint(sm) {
+        padding: 1.4rem 2.2rem;
+        font-size: $fs-14;
+    }
+}

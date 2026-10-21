@@ -1,0 +1,142 @@
+@use '../../../Styles/mixin' as *;
+@use '../../../Styles/variables' as *;
+
+.achievements {
+    position: relative;
+    padding: 8rem 3rem;
+    background: #030302;
+
+    .container {
+        @include container;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header {
+        text-align: center;
+        max-width: 68rem;
+        margin-bottom: 5rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .title {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: $clash;
+        font-size: clamp(3.4rem, 4.5vw, 5.0rem);
+        font-weight: $fw-semibold;
+        color: $white;
+        margin-bottom: 2rem;
+        width: 550px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .orangeDiamond {
+        position: absolute;
+        right: -3.5rem;
+        width: 1.6rem;
+        height: 1.6rem;
+        background: #cf5525;
+        transform: rotate(45deg);
+        box-shadow: 0 1.2rem 0 #cf5525;
+    }
+
+    .description {
+        font-family: $satoshi;
+        font-size: 1.8rem;
+        line-height: 1.7;
+        color: $white60;
+    }
+
+    .statsGrid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.6rem;
+        width: 100%;
+        margin-bottom: 1.6rem;
+    }
+
+    .awardsGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.6rem;
+        width: 100%;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 2.5rem;
+        border: 1px solid #141414;
+        border-radius: 0.8rem;
+        background: transparent;
+    }
+
+    .number,
+    .year {
+        font-family: $clash;
+        font-size: 3.2rem;
+        font-weight: $fw-semibold;
+        color: $white;
+        line-height: 1;
+    }
+
+    .label,
+    .awardText {
+        font-family: $satoshi;
+        font-size: 1.8rem;
+        color: $white60;
+        line-height: 1.5;
+    }
+
+    @include breakpoint(lg) {
+        padding: 6rem 2.4rem;
+    }
+
+    @include breakpoint(md) {
+        padding: 6rem 2rem;
+
+        .statsGrid {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
+        }
+
+        .awardsGrid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+        }
+
+        .card {
+            padding: 2rem 1.4rem;
+        }
+    }
+
+    @include breakpoint(sm) {
+        padding: 5rem 1.6rem;
+
+        .statsGrid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+        }
+
+        .awardsGrid {
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+        }
+
+        .card {
+            padding: 2rem 1.6rem;
+        }
+
+        .orangeDiamond {
+            display: none;
+        }
+    }
+}
